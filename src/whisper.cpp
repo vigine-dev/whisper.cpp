@@ -36,6 +36,7 @@
 
 #ifdef _MSC_VER
 #include <codecvt>
+#include <locale>
 #endif
 
 #if defined(WHISPER_BIG_ENDIAN)
