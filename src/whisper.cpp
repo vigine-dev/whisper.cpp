@@ -25,6 +25,7 @@
 #include <cstdio>
 #include <cstring>
 #include <fstream>
+#include <filesystem>
 #include <functional>
 #include <map>
 #include <random>
@@ -3628,7 +3629,7 @@ struct whisper_context * whisper_init_from_file_with_params_no_state(const char 
     // Convert UTF-8 path to wide string (UTF-16) for Windows, resolving character encoding issues.
     std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
     std::wstring path_model_wide = converter.from_bytes(path_model);
-    auto fin = std::ifstream(path_model_wide, std::ios::binary);
+    auto fin = std::ifstream(std::filesystem::path(path_model_wide), std::ios::binary);
 #else
     auto fin = std::ifstream(path_model, std::ios::binary);
 #endif
@@ -4722,7 +4723,7 @@ struct whisper_vad_context * whisper_vad_init_from_file_with_params(
 #ifdef _MSC_VER
     std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
     std::wstring path_model_wide = converter.from_bytes(path_model);
-    auto fin = std::ifstream(path_model_wide, std::ios::binary);
+    auto fin = std::ifstream(std::filesystem::path(path_model_wide), std::ios::binary);
 #else
     auto fin = std::ifstream(path_model, std::ios::binary);
 #endif
