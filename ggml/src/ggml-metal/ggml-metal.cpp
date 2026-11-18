@@ -7,6 +7,7 @@
 #include "ggml-metal-context.h"
 #include "ggml-metal-ops.h"
 
+#include <memory>
 #include <mutex>
 #include <string>
 
